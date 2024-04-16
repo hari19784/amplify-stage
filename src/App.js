@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import "@aws-amplify/ui-react/styles.css";
-import {
-  withAuthenticator,
-  Button,
-  Heading,
-  Image,
-  View,
-  Card,
-} from "@aws-amplify/ui-react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BuildingData from "./components/Buildings/BuildingData";
+import SelectedItem from "./components/Buildings/SelectedItem";
+import EquipmentData from "./components/Buildings/EquipmentData"
+import Loginpage from "./LoginPage";
 
-function App({ signOut }) {
-  return (
-    <View className="App">
-      <Card>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <Heading level={1}>Welcome user</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
-    </View>
-  );
-}
 
-export default withAuthenticator(App);
+function App() {
+
+    return (
+
+
+        <Router>
+    
+         
+          <Switch>
+          <Route exact path ="/" component={Loginpage}/>
+            <Route exact path="/BuildingData" component={BuildingData} />
+          <Route exact path="/SelectedItem" component={SelectedItem}/>
+          <Route exact path="/EquipmentData" component={EquipmentData}/>
+          
+          </Switch>
+        
+        </Router>
+     
+    );
+  }
+   
+ 
+export default App;
